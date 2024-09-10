@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node dist/server.js --watch"
+    "build": "tsc",
+    "dev": "node --watch-path=./dist dist/server.js"
   },
   "keywords": [],
   "author": "",

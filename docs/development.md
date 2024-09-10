@@ -44,7 +44,7 @@ RUN> tsc
 
 ## 1.1. Compile and watch
 
-- package.json > "dev": "node dist/server.js --watch"
+- package.json > "dev": "node --watch-path=./src dist/server.js"
   We watch the changes in compiled JS.
   The code will change (the tsc will compile) when we run `tsc`.
 
@@ -54,14 +54,18 @@ pnpm install swagger-ui-express
 Auto-generated swagger-ui API docs
 According to the documentation https://www.npmjs.com/package/swagger-ui-express
 
-### 2.0. swagger ui types
+## 2.0. swagger ui types
 
 install types for swagger-ui-express
 pnpm i --save-dev @types/swagger-ui-express
 
-### 2.1. JSON import
+## 2.1. JSON import
 
 tsconfig.json > uncomment resolveJsonModule
-"compilerOptions": {
+"compilerOptions": //...
 "resolveJsonModule": true,
 Because of the json import.
+
+## 2.2. Swagger UI
+
+Navigete to http://localhost:4242/api-docs

@@ -34,9 +34,6 @@ dotenv.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
 app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(openapi_spec_json_1.default));
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
-});
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });

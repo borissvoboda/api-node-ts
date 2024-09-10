@@ -42,8 +42,26 @@ RUN> tsc
 - In server.ts we creata a simple express server.
 - .env / .env.example for environmental variables
 
-## 2.0. Compile and watch
+## 1.1. Compile and watch
 
 - package.json > "dev": "node dist/server.js --watch"
   We watch the changes in compiled JS.
   The code will change (the tsc will compile) when we run `tsc`.
+
+# 2. Install Swagger UI Express
+
+pnpm install swagger-ui-express
+Auto-generated swagger-ui API docs
+According to the documentation https://www.npmjs.com/package/swagger-ui-express
+
+### 2.0. swagger ui types
+
+install types for swagger-ui-express
+pnpm i --save-dev @types/swagger-ui-express
+
+### 2.1. JSON import
+
+tsconfig.json > uncomment resolveJsonModule
+"compilerOptions": {
+"resolveJsonModule": true,
+Because of the json import.

@@ -1,0 +1,103 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "",
+        "version": "1.0.0",
+        "title": "Shipyard"
+    },
+    "paths": {
+        "/ships": {
+            "post": {
+                "summary": "Add ship to shipyard",
+                "description": "",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Ship"
+                            }
+                        }
+                    },
+                    "description": "Ship object to be added to shipyard",
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShipWithId"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Fetches list of Ships",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShipArray"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    },
+    "servers": [{
+            "url": "http://localhost:4242/v1"
+        }],
+    "components": {
+        "schemas": {
+            "Ship": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "speed"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "Enterprise D"
+                    },
+                    "speed": {
+                        "type": "string",
+                        "example": "Warp 9"
+                    }
+                }
+            },
+            "ShipWithId": {
+                "allOf": [{
+                        "$ref": "#/components/schemas/Ship"
+                    },
+                    {
+                        "properties": {
+                            "id": {
+                                "type": "number",
+                                "example": 1
+                            }
+                        }
+                    }
+                ]
+            },
+            "ShipArray": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/ShipWithId"
+                }
+            }
+        }
+    }
+}

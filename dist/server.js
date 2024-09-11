@@ -29,10 +29,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const openapi_spec_json_1 = __importDefault(require("./openapi-spec.json"));
+// import ships from './dummyData/ships.json';
+const ships_1 = __importDefault(require("./dummyData/ships"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
+app.get('/v1/ships', (req, res) => {
+    res.json(ships_1.default);
+});
+app.post('/v1/ships', (req, res) => {
+    console.log(req.body);
+    ships_1.default.push({
+        id: 13,
+        name: 'USS Excelsior NX-2000',
+        speed: '9.99999999',
+    });
+    console.log('Ships: ', ships_1.default);
+    res.status(200).json({ ok: true });
+});
 app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(openapi_spec_json_1.default));
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);

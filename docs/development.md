@@ -69,3 +69,9 @@ Because of the json import.
 ## 2.2. Swagger UI
 
 Navigete to http://localhost:4242/api-docs
+
+# TODO:
+
+Add endpoints
+Add some in-memory DB (optional)
+Add some tests (Try Cypress??? even though it is not ideal; and I don't know if it will not collide with Swagger)
